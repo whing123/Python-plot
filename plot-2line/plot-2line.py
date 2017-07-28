@@ -3,18 +3,20 @@ import numpy as np
 
 config_file = 'config.txt'
 with open(config_file,'r') as fp:
-    line = ' '
-    while line:
+
+    while True:
         line = fp.readline()
         line = line.strip()
-
+        if not line:
+            continue
+        
         if line.startswith('file1:'):
             before, file1 = line.split('file1:')
             file1 = file1.strip()
         elif line.startswith('file2:'):
             before, file2 = line.split('file2:')
             file2 = file2.strip()
-        elif line.startswith('***'):
+        elif line.startswith('***end***'):
             break
 fp.close()
 
